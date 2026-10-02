@@ -16,7 +16,52 @@ function addRow(focus = false) {
   renumber();
   if (focus) rows.lastElementChild.querySelector('input').focus();
 }
+const equipmentSets = document.querySelector('#equipment-sets');
+const addEquipmentButton = document.querySelector('#add-equipment');
+const equipmentTemplate = equipmentSets.firstElementChild.cloneNode(true);
+let equipmentId = 1;
+function updateEquipment() {
+  [...equipmentSets.children].forEach((set, index) => {
+    set.querySelector('h3').textContent = `Equipment Set ${index + 1}`;
+    const remove = set.querySelector('.remove-equipment');
+    if (remove) remove.setAttribute('aria-label', `Remove equipment set ${index + 1}`);
+  });
+  addEquipmentButton.disabled = equipmentSets.children.length >= 20;
+}
+addEquipmentButton.addEventListener('click', () => {
+  if (equipmentSets.children.length >= 20) return;
+  const set = equipmentTemplate.cloneNode(true);
+  const id = ++equipmentId;
+  set.querySelectorAll('input').forEach(input => {
+    if (input.type === 'checkbox') input.checked = false;
+    else {
+      const name = input.name;
+      input.dataset.equipmentField = name;
+      input.value = '';
+      input.id = `${name}-equipment-${id}`;
+      set.querySelector(`label[for="${name}"]`).htmlFor = input.id;
+    }
+    input.name = `equipment-${id}-${input.name}`;
+  });
+  const button = document.createElement('button');
+  button.type = 'button'; button.className = 'remove-equipment'; button.textContent = 'REMOVE SET';
+  set.querySelector('.equipment-set-title').append(button);
+  equipmentSets.append(set); updateEquipment();
+  set.querySelector('input').focus();
+  document.querySelector('#equipment-status').textContent = 'Equipment set added.';
+});
+equipmentSets.addEventListener('click', event => {
+  const remove = event.target.closest('.remove-equipment');
+  if (!remove) return;
+  const set = remove.closest('.equipment-set');
+  const next = set.nextElementSibling || set.previousElementSibling;
+  set.remove(); updateEquipment();
+  next.querySelector('input').focus();
+  document.querySelector('#equipment-status').textContent = 'Equipment set removed.';
+});
 function blank() {
+  equipmentSets.querySelectorAll('.equipment-set').forEach((set, index) => { if (index) set.remove(); });
+  updateEquipment();
   form.reset();
   rows.replaceChildren();
   for (let i = 0; i < 3; i++) addRow();

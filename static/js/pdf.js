@@ -24,7 +24,17 @@ window.FishingPDF = (() => {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(data.date) || !data.location) throw new Error('Date and location are required.');
     const parsed = new Date(data.date + 'T12:00:00Z');
     if (!Number.isFinite(parsed.getTime()) || parsed.toISOString().slice(0,10) !== data.date) throw new Error('Enter a valid date.');
-    data.methods = values.getAll('methods').join(', ');
+    data.equipment = [...form.querySelectorAll('.equipment-set')].map(set => {
+      const equipment = {};
+      for (const key of ['rod','reel','line','leader','tippet']) {
+        const input = set.querySelector(`[data-equipment-field="${key}"], [name="${key}"]`);
+        equipment[key] = clean(input.value);
+        if (equipment[key].length > 200) throw new Error(`${labels[key]} exceeds 200 characters.`);
+      }
+      equipment.methods = [...set.querySelectorAll('input[type="checkbox"]:checked')].map(input => input.value).join(', ');
+      return equipment;
+    }).filter(set => Object.values(set).some(Boolean));
+    if (data.equipment.length > 20) throw new Error('Use at most 20 equipment sets.');
     for (const [key] of notes) {
       data[key] = clean(values.get(key));
       if (data[key].length > 12000) throw new Error('Notes must be 12,000 characters or fewer.');
@@ -84,16 +94,24 @@ window.FishingPDF = (() => {
           else y+=block('No flies recorded.',margin,width);
         }
         heading(title);
-        const populated=keys.filter(key=>data[key]);
-        if(!populated.length) {y+=block('-',margin,width);continue;}
-        for(let i=0;i<populated.length;i+=2) {
-          let rowHeight=0;
-          for(let j=0;j<2 && i+j<populated.length;j++) {
-            const key=populated[i+j],x=margin+j*263;
-            rowHeight=Math.max(rowHeight,block(labels[key]+':',x,89,8,true),block(data[key],x+98,156));
+        const records = title === 'Equipment'
+          ? (data.equipment || [data]) : [data];
+        if (!records.length) { y += block('-',margin,width); continue; }
+        records.forEach((record, index) => {
+          if (title === 'Equipment' && records.length > 1) {
+            y += block(`Equipment Set ${index + 1}`,margin,width,9,true) + 4*scale;
           }
-          y+=rowHeight+4*scale;
-        }
+          const populated=keys.filter(key=>record[key]);
+          if(!populated.length) {y+=block('-',margin,width);return;}
+          for(let i=0;i<populated.length;i+=2) {
+            let rowHeight=0;
+            for(let j=0;j<2 && i+j<populated.length;j++) {
+              const key=populated[i+j],x=margin+j*263;
+              rowHeight=Math.max(rowHeight,block(labels[key]+':',x,89,8,true),block(record[key],x+98,156));
+            }
+            y+=rowHeight+4*scale;
+          }
+        });
       }
       for(const [key,title] of notes) if(data[key]) {heading(title);y+=block(data[key],margin,width);}
       heading('Trip Rating');y+=block(data.rating?`${data.rating} / 10`:'Unrated',margin,width);

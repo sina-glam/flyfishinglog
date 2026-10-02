@@ -28,14 +28,14 @@
 <input id="wind_speed" name="wind_speed" type="number"   step="any" max="1000000" min="0"></div>
 </div></section>
 
-<section class="form-section" id="equipment"><div class="section-title"><span>03</span><h2>Equipment</h2></div><div class="grid">
+<section class="form-section" id="equipment"><div class="section-title"><span>03</span><h2>Equipment</h2></div><div id="equipment-sets"><div class="equipment-set"><div class="equipment-set-title"><h3>Equipment Set 1</h3></div><div class="grid">
 <div class="field"><label for="rod">Rod</label>
 <input id="rod" name="rod" type="text"  maxlength="200" ></div><div class="field"><label for="reel">Reel</label>
 <input id="reel" name="reel" type="text"  maxlength="200" ></div><div class="field"><label for="line">Fly Line</label>
 <input id="line" name="line" type="text"  maxlength="200" ></div><div class="field"><label for="leader">Leader</label>
 <input id="leader" name="leader" type="text"  maxlength="200" ></div><div class="field"><label for="tippet">Tippet</label>
 <input id="tippet" name="tippet" type="text"  maxlength="200" ></div>
-</div><fieldset class="methods"><legend>Fishing Method <span>Choose all that apply</span></legend><div class="choices"><label><input type="checkbox" name="methods" value="Dry Fly"><span>Dry Fly</span></label><label><input type="checkbox" name="methods" value="Indicator Nymphing"><span>Indicator Nymphing</span></label><label><input type="checkbox" name="methods" value="Euro Nymphing"><span>Euro Nymphing</span></label><label><input type="checkbox" name="methods" value="Streamer"><span>Streamer</span></label><label><input type="checkbox" name="methods" value="Wet Fly"><span>Wet Fly</span></label><label><input type="checkbox" name="methods" value="Other"><span>Other</span></label></div></fieldset></section>
+</div><fieldset class="methods"><legend>Fishing Method <span>Choose all that apply</span></legend><div class="choices"><label><input type="checkbox" name="methods" value="Dry Fly"><span>Dry Fly</span></label><label><input type="checkbox" name="methods" value="Indicator Nymphing"><span>Indicator Nymphing</span></label><label><input type="checkbox" name="methods" value="Euro Nymphing"><span>Euro Nymphing</span></label><label><input type="checkbox" name="methods" value="Streamer"><span>Streamer</span></label><label><input type="checkbox" name="methods" value="Wet Fly"><span>Wet Fly</span></label><label><input type="checkbox" name="methods" value="Other"><span>Other</span></label></div></fieldset></div></div><button class="add" id="add-equipment" type="button">+ ADD EQUIPMENT</button><span id="equipment-status" class="sr-only" aria-live="polite"></span></section>
 
 <section class="form-section"><div class="section-title"><span>04</span><h2>Flies & Rigs</h2><p>What was on the end of your line?</p></div><div class="table-wrap"><table><thead><tr><th scope="col">Fly</th><th scope="col">Size</th><th scope="col">Color</th><th scope="col">Rig / Position</th><th scope="col">Result</th><th scope="col"><span class="sr-only">Remove</span></th></tr></thead><tbody id="fly-rows"></tbody></table></div><button class="add" id="add-fly" type="button">+ ADD FLY</button><span id="fly-status" class="sr-only" aria-live="polite"></span></section>
 

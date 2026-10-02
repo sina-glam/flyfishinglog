@@ -3,3 +3,8 @@
 .table-wrap{position:relative}fieldset{min-width:0}
 
 @media(min-width:701px) and (max-width:950px){.field-stamp{width:240px;margin-left:25px}}
+
+.equipment-set+.equipment-set{margin-top:28px;padding-top:24px;border-top:1px solid var(--border)}
+.equipment-set-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:15px}
+.equipment-set-title h3{margin:0;font-size:13px;color:var(--color-accent)}
+.remove-equipment{border:0;text-decoration:underline;text-underline-offset:4px;padding:8px;font-size:9px}

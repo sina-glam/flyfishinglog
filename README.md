@@ -53,3 +53,11 @@ Change the earth-tone palette in `static/css/style.css` under `:root`. Edit fiel
 Browser checks confirmed initial loading without Flask, adding/removing fly rows, preview, export action, print opening the PDF, refresh reset, no console errors, and a 390px mobile layout without page overflow. The in-app browser does not expose reliable completed download events; generated PDF bytes were separately saved, opened, rendered, and inspected. Physical printing was not tested.
 
 An optional developer check is `node tests/test_static.cjs` (uses only the bundled library and Node built-ins; no npm install). It tests one-page sample/long/extreme reports, sanitized filenames, and absence of network submission. PDF inspection also verified ending text and page bounds. Node is not required to use or host the app.
+
+## Testing shortcut
+
+Press **Option + Shift + T** on macOS, or **Alt + Shift + T** on Windows/Linux, to replace the current form with the supplied Bozeman / Mill Creek example (September 23, 2026). This fills the PDF values, two flies, methods, and rating, leaving fields absent from the PDF blank. It works while a field is focused. The fixed sample is bundled in app.js; it does not read files or save your edits. Clear Form still resets everything.
+
+## Multiple equipment sets
+
+Use + ADD EQUIPMENT for additional rod/reel/line/leader/tippet sets. Select methods independently for each set; multiple methods are allowed. Added sets can be removed. Up to 20 sets are supported. Clear Form and the testing shortcut reset to one set. All populated sets and their methods appear in the single-page PDF.
