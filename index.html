@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fly Fishing Log</title><link rel="stylesheet" href="static/css/style.css"><script defer src="static/vendor/jspdf.umd.min.js"></script><script defer src="static/js/pdf.js"></script><script defer src="static/js/app.js"></script><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src blob:; base-uri 'self'; form-action 'none'"></head>
+<body><header class="masthead"><a href="./" class="wordmark">FLY FISHING LOG<span>THE ANGLER’S FIELD RECORD</span></a><span class="local">● LOCAL BY NATURE</span></header>
+<main><div class="intro"><div><p class="eyebrow">A DAY ON THE WATER, WELL REMEMBERED.</p><h1>Record the water.<br><em>Remember the day.</em></h1><p class="intro-copy">The conditions. The flies. The moments that matter.<br>Turn your time on the water into a record worth keeping.</p></div><div class="field-stamp" aria-hidden="true"><svg viewBox="0 0 180 100"><path d="M10 58 Q45 15 115 45 L153 28 L145 57 L157 80 L117 65 Q45 96 10 58Z M58 38 L78 21 L96 39 M62 74 L83 88 L98 72 M35 49 Q47 60 34 70"/><circle cx="26" cy="54" r="2"/></svg><span>FIELD NOTES<br>GOOD DAYS / WILD WATER</span></div></div>
+<div class="form-top"><span>NEW TRIP RECORD</span><span>Only date & location are required.</span></div>
+<form id="log-form" method="dialog" autocomplete="off">
+
+
+<section class="form-section" id="trip"><div class="section-title"><span>01</span><h2>Trip</h2></div><div class="grid">
+<div class="field"><label for="date">Date <span class="required">*</span></label>
+<input id="date" name="date" type="date" required  ></div><div class="field"><label for="location">Location <span class="required">*</span></label>
+<input id="location" name="location" type="text" required maxlength="200" ></div><div class="field"><label for="area">Specific Area / Access Point</label>
+<input id="area" name="area" type="text"  maxlength="200" ></div><div class="field"><label for="start">Start Time</label>
+<input id="start" name="start" type="time"   ></div><div class="field"><label for="end">End Time</label>
+<input id="end" name="end" type="time"   ></div><div class="field"><label for="partners">Fishing Partners</label>
+<input id="partners" name="partners" type="text"  maxlength="200" ></div><div class="field"><label for="water_type">Water Type</label>
+<select name="water_type" id="water_type"><option value="">Select water type</option><option>River</option><option>Stream</option><option>Lake</option><option>Pond</option><option>Surf</option><option>Ocean</option><option>Other</option></select></div>
+</div></section>
+
+<section class="form-section" id="conditions"><div class="section-title"><span>02</span><h2>Conditions</h2></div><div class="grid">
+<div class="field"><label for="weather">Weather</label>
+<select name="weather" id="weather"><option value="">Select weather</option><option>Sunny</option><option>Partly Cloudy</option><option>Cloudy</option><option>Rain</option><option>Snow</option></select></div><div class="field"><label for="air_temp">Air Temperature (°F)</label>
+<input id="air_temp" name="air_temp" type="number"   step="any" max="1000000" min="-1000000"></div><div class="field"><label for="water_temp">Water Temperature (°F)</label>
+<input id="water_temp" name="water_temp" type="number"   step="any" max="1000000" min="-1000000"></div><div class="field"><label for="flow">Water Level / Flow (CFS)</label>
+<input id="flow" name="flow" type="number"   step="any" max="1000000" min="0"></div><div class="field"><label for="clarity">Water Clarity</label>
+<select name="clarity" id="clarity"><option value="">Select water clarity</option><option>Clear</option><option>Slightly Stained</option><option>Stained</option><option>Muddy</option></select></div><div class="field"><label for="wind">Wind</label>
+<select name="wind" id="wind"><option value="">Select wind</option><option>Calm</option><option>Light</option><option>Moderate</option><option>Strong</option></select></div><div class="field"><label for="wind_speed">Wind Speed (mph)</label>
+<input id="wind_speed" name="wind_speed" type="number"   step="any" max="1000000" min="0"></div>
+</div></section>
+
+<section class="form-section" id="equipment"><div class="section-title"><span>03</span><h2>Equipment</h2></div><div class="grid">
+<div class="field"><label for="rod">Rod</label>
+<input id="rod" name="rod" type="text"  maxlength="200" ></div><div class="field"><label for="reel">Reel</label>
+<input id="reel" name="reel" type="text"  maxlength="200" ></div><div class="field"><label for="line">Fly Line</label>
+<input id="line" name="line" type="text"  maxlength="200" ></div><div class="field"><label for="leader">Leader</label>
+<input id="leader" name="leader" type="text"  maxlength="200" ></div><div class="field"><label for="tippet">Tippet</label>
+<input id="tippet" name="tippet" type="text"  maxlength="200" ></div>
+</div><fieldset class="methods"><legend>Fishing Method <span>Choose all that apply</span></legend><div class="choices"><label><input type="checkbox" name="methods" value="Dry Fly"><span>Dry Fly</span></label><label><input type="checkbox" name="methods" value="Indicator Nymphing"><span>Indicator Nymphing</span></label><label><input type="checkbox" name="methods" value="Euro Nymphing"><span>Euro Nymphing</span></label><label><input type="checkbox" name="methods" value="Streamer"><span>Streamer</span></label><label><input type="checkbox" name="methods" value="Wet Fly"><span>Wet Fly</span></label><label><input type="checkbox" name="methods" value="Other"><span>Other</span></label></div></fieldset></section>
+
+<section class="form-section"><div class="section-title"><span>04</span><h2>Flies & Rigs</h2><p>What was on the end of your line?</p></div><div class="table-wrap"><table><thead><tr><th scope="col">Fly</th><th scope="col">Size</th><th scope="col">Color</th><th scope="col">Rig / Position</th><th scope="col">Result</th><th scope="col"><span class="sr-only">Remove</span></th></tr></thead><tbody id="fly-rows"></tbody></table></div><button class="add" id="add-fly" type="button">+ ADD FLY</button><span id="fly-status" class="sr-only" aria-live="polite"></span></section>
+
+<section class="form-section" id="catch-summary"><div class="section-title"><span>05</span><h2>Catch Summary</h2></div><div class="grid">
+<div class="field"><label for="total">Total Fish Caught</label>
+<input id="total" name="total" type="number"   step="1" max="1000000" min="0"></div><div class="field"><label for="species">Species</label>
+<input id="species" name="species" type="text"  maxlength="200" ></div><div class="field"><label for="largest">Largest Fish</label>
+<input id="largest" name="largest" type="text"  maxlength="200" ></div><div class="field"><label for="length">Approximate Length (inches)</label>
+<input id="length" name="length" type="number"   step="any" max="1000000" min="0"></div><div class="field"><label for="best_time">Best Time</label>
+<input id="best_time" name="best_time" type="text"  maxlength="200" ></div><div class="field"><label for="best_fly">Best Fly</label>
+<input id="best_fly" name="best_fly" type="text"  maxlength="200" ></div><div class="field"><label for="best_water">Best Water Type</label>
+<select name="best_water" id="best_water"><option value="">Select best water type</option><option>Riffle</option><option>Run</option><option>Pool</option><option>Pocket Water</option><option>Bank</option><option>Flat</option><option>Other</option></select></div>
+</div></section>
+
+<section class="form-section"><div class="section-title"><span>06</span><h2>Notes</h2><p>The details you’ll want to remember.</p></div><div class="notes-grid"><div class="field"><label for="worked">What Worked</label><textarea id="worked" name="worked" maxlength="12000" rows="4" ></textarea></div><div class="field"><label for="didnt">What Didn’t Work</label><textarea id="didnt" name="didnt" maxlength="12000" rows="4" ></textarea></div><div class="field"><label for="observations">Observations</label><p class="hint" id="observations-hint">Hatches, insects, fish behavior, wildlife, pressure, unusual conditions.</p><textarea id="observations" name="observations" maxlength="12000" rows="4" aria-describedby="observations-hint"></textarea></div><div class="field"><label for="next">Next Time</label><textarea id="next" name="next" maxlength="12000" rows="4" ></textarea></div></div></section>
+<section class="form-section"><div class="section-title"><span>07</span><h2>Trip Rating</h2><p>How was your day?</p></div><fieldset class="rating"><legend class="sr-only">Trip Rating from 1 to 10</legend><label><input type="radio" name="rating" value="1"><span>1</span></label><label><input type="radio" name="rating" value="2"><span>2</span></label><label><input type="radio" name="rating" value="3"><span>3</span></label><label><input type="radio" name="rating" value="4"><span>4</span></label><label><input type="radio" name="rating" value="5"><span>5</span></label><label><input type="radio" name="rating" value="6"><span>6</span></label><label><input type="radio" name="rating" value="7"><span>7</span></label><label><input type="radio" name="rating" value="8"><span>8</span></label><label><input type="radio" name="rating" value="9"><span>9</span></label><label><input type="radio" name="rating" value="10"><span>10</span></label></fieldset><div class="rating-caption"><span>A TOUGH DAY</span><span>ONE TO REMEMBER</span></div></section>
+<div id="message" role="status" aria-live="polite"></div><div class="actions"><button type="button" id="clear" class="clear">CLEAR FORM</button><div><button type="submit" name="action" value="preview">PREVIEW PDF</button><button type="submit" name="action" value="print">PRINT</button><button type="submit" name="action" value="export" class="primary">EXPORT PDF <span>↓</span></button></div></div>
+<p class="privacy">Yours to keep. Nothing is stored here. Save your PDF before leaving this page.</p></form></main>
+<footer><span>FLY FISHING LOG</span><span>LEAVE NO TRACE. KEEP THE MEMORIES.</span></footer>
+<template id="fly-template"><tr><td><input name="fly[]" maxlength="200" aria-label="Fly"></td><td><input name="size[]" maxlength="200" aria-label="Size"></td><td><input name="color[]" maxlength="200" aria-label="Color"></td><td><input name="rig[]" maxlength="200" aria-label="Rig / Position"></td><td><input name="result[]" maxlength="200" aria-label="Result"></td><td><button type="button" class="remove" aria-label="Remove fly">×</button></td></tr></template></body></html>
