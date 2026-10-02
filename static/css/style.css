@@ -8,3 +8,16 @@
 .equipment-set-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:15px}
 .equipment-set-title h3{margin:0;font-size:13px;color:var(--color-accent)}
 .remove-equipment{border:0;text-decoration:underline;text-underline-offset:4px;padding:8px;font-size:9px}
+
+/* WebKit date/time controls otherwise retain an intrinsic width on iPad. */
+.field{min-width:0}
+.field input,.field select,.field textarea{min-width:0;max-width:100%;box-sizing:border-box}
+.field input,.field select{height:46px;font-size:16px;line-height:normal}
+input[type="date"],input[type="time"]{-webkit-appearance:none;appearance:none;display:block;text-align:left}
+input::-webkit-date-and-time-value{text-align:left;min-height:1.2em}
+input::-webkit-datetime-edit{padding:0;min-width:0}
+.notes-grid .field{display:flex;flex-direction:column}
+.notes-grid .hint{margin:0 0 10px;min-height:2.8em}
+.notes-grid textarea{margin-top:auto;min-height:140px}
+@media(min-width:701px) and (max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
+@media(max-width:700px){.notes-grid .hint{min-height:0}.notes-grid textarea{margin-top:0}}
