@@ -72,3 +72,44 @@ form.addEventListener('submit', async event => {
     preview?.close(); message.textContent = error.message;
   } finally { buttons.forEach(button => button.disabled = false); }
 });
+
+// Developer convenience: Option/Alt + Shift + T loads the supplied PDF example.
+// Use event.code because Option on macOS changes the character produced by T.
+const testTrip = {
+  date: '2026-09-23', location: 'Bozeman', area: 'Mill Creek',
+  start: '14:30', end: '17:30', partners: 'Adam Smith, Tom Sayer',
+  water_type: 'Stream', weather: 'Snow', air_temp: '75', water_temp: '56',
+  clarity: 'Clear', wind: 'Light', rod: 'Redington Path 5WT',
+  reel: 'Redington Run 5wt',
+  line: 'Scientific Anglers Amplitude Textured Trout Standard Fly Line',
+  leader: '9ft, 5X', tippet: '1 foot', total: '3',
+  species: 'Cutthroat trouts', largest: 'Cutthroat trouts', length: '13',
+  best_fly: 'Caddis', best_water: 'Pool', didnt: "Nymph didn't work"
+};
+function populateTestTrip() {
+  blank();
+  for (const [name, value] of Object.entries(testTrip)) {
+    form.elements.namedItem(name).value = value;
+  }
+  form.querySelectorAll('input[name="methods"]').forEach(input => {
+    input.checked = ['Dry Fly', 'Euro Nymphing'].includes(input.value);
+  });
+  form.querySelector('input[name="rating"][value="8"]').checked = true;
+  const flies = [
+    ['Caddis', '18', 'Beige', 'Dry', '2 trouts'],
+    ['Ant', '16', 'Black/red', 'Dry', '1 trout']
+  ];
+  flies.forEach((values, index) => {
+    rows.children[index].querySelectorAll('input').forEach((input, column) => {
+      input.value = values[column];
+    });
+  });
+  message.textContent = 'Test trip loaded from the Bozeman PDF. Ready to preview or export.';
+}
+window.addEventListener('keydown', event => {
+  if (event.code === 'KeyT' && event.altKey && event.shiftKey &&
+      !event.ctrlKey && !event.metaKey && !event.repeat && !event.isComposing) {
+    event.preventDefault();
+    populateTestTrip();
+  }
+});
