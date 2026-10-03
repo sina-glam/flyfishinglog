@@ -1,6 +1,6 @@
 # Fly Fishing Log
 
-A static HTML/CSS/JavaScript fishing journal that produces a purpose-designed, single-page Letter PDF directly in your browser. No backend, build step, Python, Node, database, or account is required to use the app.
+A static HTML/CSS/JavaScript fishing journal that produces a purpose-designed, up-to-two-page Letter PDF directly in your browser. No backend, build step, Python, Node, database, or account is required to use the app.
 
 ## Run locally
 
@@ -38,7 +38,7 @@ The older Flask files (`app.py`, `fields.py`, `pdf/`, `templates/`, `requirement
 
 Date and location are required; everything else is optional. Start with three fly rows, add/remove up to 50, and select multiple fishing methods. Preview opens the PDF in another tab, Export downloads it, and Print opens the report for printing through the PDF viewer. Clear Form asks for confirmation.
 
-`static/js/pdf.js` creates vector text and tables with jsPDF 3.0.4, bundled locally under its MIT license. It measures and reflows all fields, reducing font size, line spacing, and padding only when needed to fit exactly one Letter page. Nothing is truncated. Very large entries can produce small print. Fields allow 200 characters and each notes field 12,000 characters. Standard PDF fonts support Western Latin text best.
+`static/js/pdf.js` creates vector text and tables with jsPDF 3.0.4, bundled locally under its MIT license. It measures and reflows all fields, reducing font size, line spacing, and padding only when needed to fit up to two Letter pages. Nothing is truncated. Very large entries can produce small print. Fields allow 200 characters and each notes field 12,000 characters. Standard PDF fonts support Western Latin text best.
 
 ## Privacy
 
@@ -60,4 +60,8 @@ Press **Option + Shift + T** on macOS, or **Alt + Shift + T** on Windows/Linux, 
 
 ## Multiple equipment sets
 
-Use + ADD EQUIPMENT for additional rod/reel/line/leader/tippet sets. Select methods independently for each set; multiple methods are allowed. Added sets can be removed. Up to 20 sets are supported. Clear Form and the testing shortcut reset to one set. All populated sets and their methods appear in the single-page PDF.
+Use + ADD EQUIPMENT for additional rod/reel/line/leader/tippet sets. Select methods independently for each set; multiple methods are allowed. Added sets can be removed. Up to 20 sets are supported. Clear Form and the testing shortcut reset to one set. All populated sets and their methods appear in the up-to-two-page PDF.
+
+## Flow, coordinates, and lessons
+
+Water Flow (CFS) accepts optional nonnegative values. Water Level and Gauge / Measurement Location are optional. Latitude/longitude use decimal degrees and must both be entered or both blank; latitude is -90 to 90 and longitude -180 to 180. No device location or external APIs are used. What Did You Learn? supports 12,000 characters and is omitted from PDFs when blank. Clear Form resets all additions; Option/Alt+Shift+T fills fictional examples. Reports flow onto up to two Letter pages, reducing text size only when necessary, with page numbers. Very large entries still result in small print.

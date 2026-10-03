@@ -121,8 +121,8 @@ form.addEventListener('submit', async event => {
 // Developer convenience: Option/Alt + Shift + T loads the supplied PDF example.
 // Use event.code because Option on macOS changes the character produced by T.
 const testTrip = {
-  date: '2026-09-23', location: 'Bozeman', area: 'Mill Creek',
-  start: '14:30', end: '17:30', partners: 'Adam Smith, Tom Sayer',
+  date: '2026-09-23', location: 'Demo River', area: 'Fictional Access Point', latitude: '45.123456', longitude: '-110.123456', flow: '320', water_level: 'Normal', gauge: 'Fictional upstream gauge', learned: 'Adjust depth before changing flies.',
+  start: '14:30', end: '17:30', partners: 'Demo Angler A, Demo Angler B',
   water_type: 'Stream', weather: 'Snow', air_temp: '75', water_temp: '56',
   clarity: 'Clear', wind: 'Light', rod: 'Redington Path 5WT',
   reel: 'Redington Run 5wt',
@@ -149,7 +149,7 @@ function populateTestTrip() {
       input.value = values[column];
     });
   });
-  message.textContent = 'Test trip loaded from the Bozeman PDF. Ready to preview or export.';
+  message.textContent = 'Fictional test trip loaded. Ready to preview or export.';
 }
 window.addEventListener('keydown', event => {
   if (event.code === 'KeyT' && event.altKey && event.shiftKey &&
