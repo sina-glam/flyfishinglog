@@ -24,3 +24,7 @@ input::-webkit-datetime-edit{padding:0;min-width:0}
 
 /* Lessons occupy the complete final row of Notes. */
 .notes-grid .learned-field{grid-column:1 / -1}
+
+/* Full Notes width, independent of the helper class on the HTML wrapper. */
+.notes-grid > .field:has(> #learned){grid-column:1 / -1;min-width:0}
+.notes-grid #learned{display:block;width:100%;max-width:100%;box-sizing:border-box;align-self:stretch}
