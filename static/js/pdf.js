@@ -8,7 +8,7 @@ window.FishingPDF = (() => {
     ['Catch Summary', ['total','species','largest','length','best_time','best_fly','best_water']]
   ];
   const labels = {date:'Date',location:'Location',area:'Specific Area / Access Point',start:'Start Time',end:'End Time',partners:'Fishing Partners',water_type:'Water Type',weather:'Weather',air_temp:'Air Temperature (°F)',water_temp:'Water Temperature (°F)',flow:'Water Flow (CFS)',water_level:'Water Level',gauge:'Gauge / Measurement Location',latitude:'Latitude',longitude:'Longitude',clarity:'Water Clarity',wind:'Wind',wind_speed:'Wind Speed (mph)',rod:'Rod',reel:'Reel',line:'Fly Line',leader:'Leader',tippet:'Tippet',methods:'Fishing Method',total:'Total Fish Caught',species:'Species',largest:'Largest Fish',length:'Approximate Length (inches)',best_time:'Best Time',best_fly:'Best Fly',best_water:'Best Water Type'};
-  const notes = [['worked','What Worked'],['didnt',"What Didn't Work"],['observations','Observations'],['learned','What Did You Learn?'],['next','Next Time']];
+  const notes = [['worked','What Worked'],['didnt',"What Didn't Work"],['observations','Observations'],['next','Next Time'],['learned','What Did You Learn?']];
   // Standard PDF fonts use Windows Latin characters. Normalize common punctuation.
   function clean(value) {
     return String(value || '').trim().replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g,'').replace(/[‘’]/g,"'").replace(/[“”]/g,'"').replace(/[–—]/g,'-').replace(/…/g,'...');
